@@ -1,7 +1,7 @@
 <h1>Edit event</h1>
 
 <% if @event.errors.any? %>
-<h2>Form can't be saved due to following errors: <h2>
+<h2>Form can't be saved due to following errors: </h2>
     <ul>
         <% @event.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
