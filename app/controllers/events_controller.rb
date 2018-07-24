@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+    before_action :set_event_params, only: [:edit, :update, :show, :destroy]
+    
     def index
         @events = Event.all
     end
@@ -8,11 +10,10 @@ class EventsController < ApplicationController
     end
 
     def edit
-        @event = Event.find(params[:id])
+
     end
 
     def update
-        @event = Event.find(params[:id])
         if @event.update(event_params)
             flash[:notice] = "Successfully updated the event!"
             redirect_to event_path(@event)
@@ -32,20 +33,24 @@ class EventsController < ApplicationController
     end
 
     def show
-        @event = Event.find(params[:id])
+        
     end
 
     def destroy
-        @event = Event.find(params[:id])
         @event.destroy
         flash[:notice] = "Event deleted!"
         redirect_to events_path        
     end
 
     private
+    def set_event_params
+        @event = Event.find(params[:id])
+    end
+
     def event_params
         params.require(:event).permit(:title, :description, :venue, :startsat, :endsat)
     end
+
     def events_show
 
     end
