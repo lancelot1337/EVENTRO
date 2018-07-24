@@ -21,6 +21,7 @@
         <td><%= event.endsat.strftime("%m/%d/%Y") %> at <%= event.endsat.strftime("%I:%M:%S %p") %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Show', event_path(event) %></td>
+        <td><%= link_to 'Delete', event_path(event), method: :delete, data: { confirm: "Are you sure you want to delete this event?" } %></td>
     </tr>
     <% end %>
 </table>

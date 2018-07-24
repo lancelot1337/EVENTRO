@@ -35,6 +35,13 @@ class EventsController < ApplicationController
         @event = Event.find(params[:id])
     end
 
+    def destroy
+        @event = Event.find(params[:id])
+        @event.destroy
+        flash[:notice] = "Event deleted!"
+        redirect_to events_path        
+    end
+
     private
     def event_params
         params.require(:event).permit(:title, :description, :venue, :startsat, :endsat)
