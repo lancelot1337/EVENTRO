@@ -1,0 +1,37 @@
+<% if @event.errors.any? %>
+<h2>Form can't be saved due to following errors: </h2>
+    <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @event do |f| %>
+    <p>
+        <%= f.label :title %>
+        <br>
+        <%= f.text_field :title %>
+        <br>
+        <%= f.label :description %>
+        <br>
+        <%= f.text_area :description %>
+        <br>
+        <%= f.label :venue %>
+        <br>
+        <%= f.text_field :venue %>
+        <br>
+        <%= f.label :startsat %>
+        <br>
+        <%= f.datetime_field :startsat %>
+        <br>
+        <%= f.label :endsat %>
+        <br>
+        <%= f.datetime_field :endsat %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+<% end %>
+
+<%= link_to 'View all events', events_path%>
