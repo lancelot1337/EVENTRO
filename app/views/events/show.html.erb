@@ -15,3 +15,6 @@
 <p>
     Ends on: <%= @event.endsat.strftime("%m/%d/%Y") %> at <%= @event.endsat.strftime("%I:%M:%S %p") %>
 </p>
+
+<%= link_to 'Edit this event', edit_event_path(@event) %>
+<%= link_to 'View all events', events_path%>
