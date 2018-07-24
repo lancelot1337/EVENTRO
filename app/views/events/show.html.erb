@@ -1,0 +1,17 @@
+<h1>Current event</h1>
+
+<p>
+    Title: <%= @event.title%>
+</p>
+<p>
+    Description: <%= @event.description%>
+</p>
+<p>
+    Venue: <%= @event.venue%>
+</p>
+<p>
+    Starts on: <%= @event.startsat.strftime("%m/%d/%Y") %> at <%= @event.startsat.strftime("%I:%M:%S %p") %>
+</p>
+<p>
+    Ends on: <%= @event.endsat.strftime("%m/%d/%Y") %> at <%= @event.endsat.strftime("%I:%M:%S %p") %>
+</p>

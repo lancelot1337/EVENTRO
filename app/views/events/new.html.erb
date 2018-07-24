@@ -1,4 +1,14 @@
 <h1>New Event</h1>
+
+<% if @event.errors.any? %>
+<h2>Form can't be saved due to following errors: <h2>
+    <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
 <%= form_for @event do |f| %>
     <p>
         <%= f.label :title %>
@@ -15,11 +25,11 @@
         <br>
         <%= f.label :startsat %>
         <br>
-        <%= f.date_field :startsat %>
+        <%= f.datetime_field :startsat %>
         <br>
         <%= f.label :endsat %>
         <br>
-        <%= f.date_field :endsat %>
+        <%= f.datetime_field :endsat %>
     </p>
     <p>
         <%= f.submit %>
