@@ -1,0 +1,26 @@
+<h1>All events</h1>
+<p>
+    <%= link_to 'Create new event', new_event_path %>
+</p>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Venue</th>
+        <th>Starts at</th>
+        <th>Ends at</th>
+    </tr>
+    
+    <% @events.each do |event| %>
+    <tr>
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= event.venue %></td>
+        <td><%= event.startsat.strftime("%m/%d/%Y") %> at <%= event.startsat.strftime("%I:%M:%S %p") %></td>
+        <td><%= event.endsat.strftime("%m/%d/%Y") %> at <%= event.endsat.strftime("%I:%M:%S %p") %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Show', event_path(event) %></td>
+    </tr>
+    <% end %>
+</table>
