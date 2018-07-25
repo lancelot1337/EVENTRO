@@ -1,6 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html, body{
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 #custom-brand{
     float: left;
     font-size: 1.7em;
