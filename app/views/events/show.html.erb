@@ -1,20 +1,20 @@
-<h1>Current event</h1>
+<h2 align="center">Title: <%= @event.title %> </h2>
+<div class="well col-xs-8 col-xs-offset-2">
+    <h4 class="description"><strong>Description:</strong></h4> 
+    <%= simple_format(@event.description) %>
+    <hr>
+    <h4 class="venue"><strong>Venue:</strong></h4><%= @event.venue%>
+    <hr>
+    <h4 class="startsat"><strong>Starts on:</strong></h4><%= @event.startsat.strftime("%m/%d/%Y") %> at <%= @event.startsat.strftime("%I:%M:%S %p") %>
+    <hr>
+    <h4 class="endsat"><strong>Ends on:</strong></h4><%= @event.endsat.strftime("%m/%d/%Y") %> at <%= @event.endsat.strftime("%I:%M:%S %p") %>
+    <hr>
+    <div class="event-actions">
+        <%= link_to "Edit this event", edit_event_path(@event), class: "btn btn-xs btn-primary" %>
+        <%= link_to "Delete this event", event_path(@event), method: :delete, 
+            data: {confirm: "Are you sure you want to delete the event?"}, 
+            class: "btn btn-xs btn-danger" %>
+        <%= link_to "View all events", events_path, class: "btn btn-xs btn-success"%>
+    </div>
+</div>
 
-<p>
-    Title: <%= @event.title%>
-</p>
-<p>
-    Description: <%= @event.description%>
-</p>
-<p>
-    Venue: <%= @event.venue%>
-</p>
-<p>
-    Starts on: <%= @event.startsat.strftime("%m/%d/%Y") %> at <%= @event.startsat.strftime("%I:%M:%S %p") %>
-</p>
-<p>
-    Ends on: <%= @event.endsat.strftime("%m/%d/%Y") %> at <%= @event.endsat.strftime("%I:%M:%S %p") %>
-</p>
-
-<%= link_to 'Edit this event', edit_event_path(@event) %>
-<%= link_to 'View all events', events_path%>
