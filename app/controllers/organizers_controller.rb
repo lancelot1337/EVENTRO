@@ -13,6 +13,20 @@ class OrganizersController < ApplicationController
         end
     end
 
+    def edit
+        @organizer = Organizer.find(params[:id])
+    end
+
+    def update
+        @organizer = Organizer.find(params[:id])
+        if @organizer.update(organizer_params)
+            flash[:success] = "Account updated successfully"
+            redirect_to events_path
+        else
+            render 'edit'
+        end
+    end
+
     private
     def organizer_params
         params.require(:organizer).permit(:username, :email, :password)
