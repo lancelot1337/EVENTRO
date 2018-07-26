@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'about', to: 'pages#about'
   resources :events
+  get 'signup', to: 'organizers#new'
+  resources :organizers, except: [:new]
 end
