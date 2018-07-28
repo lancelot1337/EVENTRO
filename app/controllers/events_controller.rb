@@ -25,6 +25,11 @@ class EventsController < ApplicationController
 
     def create
         @event = Event.new(event_params)
+        #--------------------------
+        #DANGER, FIX THIS ASAP!
+        @event.organizer = Organizer.first
+        #--------------------------
+        
         if @event.save
             flash[:success] = "Successfully created the event!"
             redirect_to event_path(@event)
