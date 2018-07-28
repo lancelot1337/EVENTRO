@@ -1,4 +1,8 @@
 class OrganizersController < ApplicationController
+    def index
+        @organizers = Organizer.all
+    end
+
     def new
         @organizer = Organizer.new
     end
