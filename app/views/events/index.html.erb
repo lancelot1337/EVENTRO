@@ -1,3 +1,11 @@
 <h1 align="center">All Events</h1>
 
+<!-- for pagination -->
+<div align="center">
+    <%= will_paginate %>
+</div>
 <%= render 'event', obj: @events %>
+<!-- for pagination -->
+<div align="center">
+    <%= will_paginate %>
+</div>

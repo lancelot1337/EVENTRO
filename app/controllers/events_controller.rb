@@ -2,7 +2,8 @@ class EventsController < ApplicationController
     before_action :set_event_params, only: [:edit, :update, :show, :destroy]
     
     def index
-        @events = Event.all
+        #for pagination
+        @events = Event.paginate(page: params[:page], per_page: 5)
     end
     
     def new

@@ -1,6 +1,8 @@
 <h1 align="center">All EVENTRO organizers</h1>
 
 <div class="center">
+    <!-- for pagination -->
+    <%= will_paginate %>
     <% @organizers.each do |organizer| %>
         <ul class="listing">
             <div class="row">
@@ -17,4 +19,6 @@
             </div>
         </ul>
     <% end %>
+    <!-- for pagination -->
+    <%= will_paginate %>
 </div>
