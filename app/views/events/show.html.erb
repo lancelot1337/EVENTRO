@@ -16,9 +16,11 @@
     <hr>
     <h4 class="venue"><strong>Venue:</strong></h4><%= @event.venue%>
     <hr>
-    <h4 class="startsat"><strong>Starts on:</strong></h4><%= @event.startsat.strftime("%m/%d/%Y") %> at <%= @event.startsat.strftime("%I:%M:%S %p") %>
+    <strong>
+    <h4 class="startsat"><strong>Starts on:</strong></h4><%= @event.startsat.strftime("%d/%m/%Y") %> at <%= @event.startsat.strftime("%I:%M:%S %p") %>
+    </strong>
     <hr>
-    <h4 class="endsat"><strong>Ends on:</strong></h4><%= @event.endsat.strftime("%m/%d/%Y") %> at <%= @event.endsat.strftime("%I:%M:%S %p") %>
+    <h4 class="endsat"><strong>Ends on:</strong></h4><%= @event.endsat.strftime("%d/%m/%Y") %> at <%= @event.endsat.strftime("%I:%M:%S %p") %>
     <hr>
     <div class="event-actions">
         <% if logged_in? && (current_organizer == @event.organizer || current_organizer.admin?) %>
