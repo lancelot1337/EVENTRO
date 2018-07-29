@@ -21,10 +21,12 @@
     <h4 class="endsat"><strong>Ends on:</strong></h4><%= @event.endsat.strftime("%m/%d/%Y") %> at <%= @event.endsat.strftime("%I:%M:%S %p") %>
     <hr>
     <div class="event-actions">
-        <%= link_to "Edit this event", edit_event_path(@event), class: "btn btn-xs btn-primary" %>
-        <%= link_to "Delete this event", event_path(@event), method: :delete, 
-            data: {confirm: "Are you sure you want to delete the event?"}, 
-            class: "btn btn-xs btn-danger" %>
+        <% if logged_in? && (current_organizer == @event.organizer) %>
+            <%= link_to "Edit this event", edit_event_path(@event), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Delete this event", event_path(@event), method: :delete, 
+                data: {confirm: "Are you sure you want to delete the event?"}, 
+                class: "btn btn-xs btn-danger" %>
+        <% end %>
         <%= link_to "View all events", events_path, class: "btn btn-xs btn-success"%>
     </div>
 </div>
