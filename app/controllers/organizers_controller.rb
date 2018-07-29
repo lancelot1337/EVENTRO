@@ -12,8 +12,9 @@ class OrganizersController < ApplicationController
     def create
         @organizer = Organizer.new(organizer_params)
         if @organizer.save
+            session[:organizer_id] = @organizer.id
             flash[:success] = "Hey #{@organizer.username}! Welcome to EVENTRO!"
-            redirect_to events_path
+            redirect_to organizer_path(@organizer)
         else
             render 'new'
         end
