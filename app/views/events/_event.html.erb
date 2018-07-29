@@ -21,7 +21,7 @@
                 </div>
 
                 <!-- Restricting actions to article.user-->
-                <% if logged_in? && (current_organizer == event.organizer) %>
+                <% if logged_in? && (current_organizer == event.organizer || current_organizer.admin?) %>
                     <div class="article-actions">
                         <%= link_to "Edit this event", edit_event_path(event), class: "btn btn-xs btn-primary" %>
                     <%= link_to "Delete this event", event_path(event), method: :delete, 

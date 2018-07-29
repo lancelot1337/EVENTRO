@@ -11,10 +11,12 @@
                         <%= link_to organizer.username, organizer_path(organizer) %>
                     </li>
                     <li><small><%= pluralize(organizer.events.count, "event") if organizer.events %></small></li>
-                    <li>
-                        <%= link_to "Delete this organizer", organizer_path(organizer), method: :delete, 
-                            data: { confirm: "Are you sure you want to delete the organizer and all the events by this organizer?" }%>
-                    </li>
+                    <% if logged_in? and current_organizer.admin? %>
+                        <li>
+                            <%= link_to "Delete this organizer", organizer_path(organizer), method: :delete, 
+                                data: { confirm: "Are you sure you want to delete the organizer and all the events by this organizer?" }%>
+                        </li>
+                    <% end %>
                 </div>
             </div>
         </ul>

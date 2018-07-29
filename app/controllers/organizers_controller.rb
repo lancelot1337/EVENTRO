@@ -1,6 +1,7 @@
 class OrganizersController < ApplicationController
     before_action :set_organizer, only: [:edit, :update, :show, :destroy]
     before_action :require_same_organizer, only: [:edit, :update, :destroy]
+    before_action :require_admin, only: [:destroy]
     def index
         @organizers = Organizer.paginate(page: params[:page], per_page: 5)
     end
@@ -50,8 +51,14 @@ class OrganizersController < ApplicationController
             @organizer = Organizer.find(params[:id])
     end
     def require_same_organizer
-        if current_organizer != @organizer 
+        if current_organizer != @organizer and !current_organizer.admin?
             flash[:danger] = "You can only edit your own profile"
+            redirect_to root_path
+        end
+    end
+    def require_admin
+        if logged_in? and !current_organizer.admin?
+            flash[:danger] = "You must be an admin to do this"
             redirect_to root_path
         end
     end

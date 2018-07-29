@@ -57,7 +57,7 @@ class EventsController < ApplicationController
     end
 
     def require_same_organizer
-        if current_organizer != @event.organizer
+        if current_organizer != @event.organizer and !current_organizer.admin?
             flash[:danger] = "You can only edit or delete your own events"
             redirect_to root_path
         end 
