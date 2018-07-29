@@ -1,4 +1,5 @@
 class OrganizersController < ApplicationController
+    before_action :set_organizer, only: [:edit, :update, :show, :destroy]
     def index
         @organizers = Organizer.paginate(page: params[:page], per_page: 5)
     end
@@ -18,11 +19,9 @@ class OrganizersController < ApplicationController
     end
 
     def edit
-        @organizer = Organizer.find(params[:id])
     end
 
     def update
-        @organizer = Organizer.find(params[:id])
         if @organizer.update(organizer_params)
             flash[:success] = "Account updated successfully"
             redirect_to events_path
@@ -32,11 +31,20 @@ class OrganizersController < ApplicationController
     end
 
     def show
-        @organizer = Organizer.find(params[:id])
     end
+
+    def destroy
+        @organizer.destroy
+        flash[:danger] = "Organizer and all events created by organizer have been deleted"
+        redirect_to organizers_path
+    end
+
 
     private
     def organizer_params
         params.require(:organizer).permit(:username, :email, :password)
+    end
+        def set_organizer
+            @organizer = Organizer.find(params[:id])
     end
 end
