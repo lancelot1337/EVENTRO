@@ -27,10 +27,7 @@ class EventsController < ApplicationController
 
     def create
         @event = Event.new(event_params)
-        #--------------------------
-        #DANGER, FIX THIS ASAP!
-        @event.organizer = Organizer.first
-        #--------------------------
+        @event.organizer = current_organizer
         
         if @event.save
             flash[:success] = "Successfully created the event!"
