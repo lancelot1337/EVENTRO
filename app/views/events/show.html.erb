@@ -16,6 +16,14 @@
     <hr>
     <h4 class="venue"><strong>Venue:</strong></h4><%= @event.venue%>
     <hr>
+    <% if @event.latitude %>
+        <iframe width="450" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAkknFz0Zqp6KlR1H_I_1As8J48RWsUvIg&q=<%= @event.latitude %>,<%= @event.longitude %>" allowfullscreen>
+        </iframe>
+    <% else %>
+        <iframe width="450" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAkknFz0Zqp6KlR1H_I_1As8J48RWsUvIg&q=<%= @event.venue %>" allowfullscreen>
+        </iframe>
+    <% end %>
+    <hr>
     <strong>
     <h4 class="startsat"><strong>Starts on:</strong></h4><%= @event.startsat.strftime("%d/%m/%Y") %> at <%= @event.startsat.strftime("%I:%M:%S %p") %>
     </strong>
