@@ -17,7 +17,7 @@
                     Ends on: <%= event.endsat.strftime("%d/%m/%Y") %> at <%= event.endsat.strftime("%I:%M:%S %p") %>
                     <div class="event-meta-details">
                         <small>
-                            Organized by: <span class="organizer-name"><%= event.organizer.username if event.organizer %></span>, last updated: <%= time_ago_in_words(event.updated_at) %> ago
+                            Organized by: <%= link_to event.organizer.username, organizer_path(event.organizer), class: "organizer-name" if event.organizer %>, last updated: <%= time_ago_in_words(event.updated_at) %> ago
                         </small>
                     </div>
                 </div>
