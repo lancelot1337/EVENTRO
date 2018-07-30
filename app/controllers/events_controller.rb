@@ -53,7 +53,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-        params.require(:event).permit(:title, :description, :venue, :startsat, :endsat)
+        params.require(:event).permit(:title, :description, :venue, :startsat, :endsat, :latitude, :longitude)
     end
 
     def require_same_organizer
