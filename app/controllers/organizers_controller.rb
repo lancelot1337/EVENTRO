@@ -34,6 +34,7 @@ class OrganizersController < ApplicationController
     end
 
     def show
+        @organizer_events = @organizer.events.paginate(page: params[:page], per_page: 5)
     end
 
     def destroy

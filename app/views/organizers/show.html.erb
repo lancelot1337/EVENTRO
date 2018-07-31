@@ -1,3 +1,9 @@
 <h1 align="center">Welcome to <%= @organizer.username %>'s front page</h1>
 <h4 align="center"><%= @organizer.username %>'s events</h4>
-<%= render 'events/event', obj: @organizer.events %>
+<div class="center">
+    <%= will_paginate @organizer_events %>
+</div>
+<%= render 'events/event', obj: @organizer_events %>
+<div class="center">
+    <%= will_paginate @organizer_events %>
+</div>
