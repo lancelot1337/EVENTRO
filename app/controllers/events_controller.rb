@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 
     def index
         #for pagination
-        @events = Event.paginate(page: params[:page], per_page: 5)
+        @events = Event.where('startsat > ?', Time.current ).paginate(page: params[:page], per_page: 5)
     end
     
     def new

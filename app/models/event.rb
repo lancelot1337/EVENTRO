@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-    default_scope { order(created_at: :desc) }
+    default_scope { order(startsat: :asc) }
     belongs_to :organizer
     validates :title, presence: true, length: { minimum: 3, maximum: 100 }
     validates :description, presence: true, length: { minimum: 5, maximum: 5000 }
