@@ -1,8 +1,11 @@
 class OrganizersController < ApplicationController
+    # execute these functions on server start
     before_action :set_organizer, only: [:edit, :update, :show, :destroy]
     before_action :require_same_organizer, only: [:edit, :update, :destroy]
     before_action :require_admin, only: [:destroy]
+
     def index
+        #for pagination
         @organizers = Organizer.paginate(page: params[:page], per_page: 5)
     end
 
@@ -45,12 +48,17 @@ class OrganizersController < ApplicationController
 
 
     private
+    #allow params to be accessible by actions
     def organizer_params
         params.require(:organizer).permit(:username, :email, :password)
     end
+
+    #init instance variable @event
     def set_organizer
             @organizer = Organizer.find(params[:id])
     end
+
+    #check if the event belong to the logged in organizer
     def require_same_organizer
         if current_organizer != @organizer and !current_organizer.admin?
             flash[:danger] = "You can only edit your own profile"

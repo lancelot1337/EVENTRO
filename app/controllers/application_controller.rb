@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
         !!current_organizer
     end
 
+    #check if user is authenticated
     def require_organizer
         if !logged_in?
             flash[:danger] = "You must be logged in to perform that action"

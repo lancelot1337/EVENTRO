@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController 
     def new
-
     end
 
     def create
@@ -17,6 +16,7 @@ class SessionsController < ApplicationController
         end
     end
     
+    #delete cookie
     def destroy
         session[:organizer_id] = nil
         flash[:success] = "You have logged out!"

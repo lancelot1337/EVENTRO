@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+    # execute these functions on server start
     before_action :set_event_params, only: [:edit, :update, :show, :destroy]
     before_action :require_organizer, except: [:index, :show]
     before_action :require_same_organizer, only: [:edit, :update, :destroy]
@@ -13,7 +14,6 @@ class EventsController < ApplicationController
     end
 
     def edit
-
     end
 
     def update
@@ -27,6 +27,8 @@ class EventsController < ApplicationController
 
     def create
         @event = Event.new(event_params)
+
+        #set the organizer using cookie
         @event.organizer = current_organizer
         
         if @event.save
@@ -48,14 +50,17 @@ class EventsController < ApplicationController
     end
 
     private
+    #init instance variable @event
     def set_event_params
         @event = Event.find(params[:id])
     end
 
+    #allow params to be accessible by actions
     def event_params
         params.require(:event).permit(:title, :description, :venue, :startsat, :endsat, :latitude, :longitude)
     end
 
+    #check if the event belong to the logged in organizer
     def require_same_organizer
         if current_organizer != @event.organizer and !current_organizer.admin?
             flash[:danger] = "You can only edit or delete your own events"
