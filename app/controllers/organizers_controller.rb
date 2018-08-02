@@ -6,7 +6,7 @@ class OrganizersController < ApplicationController
 
     def index
         #for pagination
-        @organizers = Organizer.paginate(page: params[:page], per_page: 5)
+        @organizers = Organizer.paginate(page: params[:page], per_page: 10)
     end
 
     def new
