@@ -23,12 +23,11 @@
     <h4 class="venue"><strong>Venue:</strong></h4><%= @event.venue%>
     <hr>
     
-    <% if @event.latitude %>
+    <% if @event.latitude != "" && @event.longitude != "" %>
         <iframe width="450" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASm9g9kWz7LPdZngxkB4quGBuFll1XhEM&q=<%= @event.latitude %>,<%= @event.longitude %>" allowfullscreen>
         </iframe>
     <% else %>
-        <iframe width="450" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASm9g9kWz7LPdZngxkB4quGBuFll1XhEM&q=<%= @event.venue %>" allowfullscreen>
-        </iframe>
+        <%= "Map not available due to technical difficulties, Sorry."%>
     <% end %>
     <hr>
     <strong>
