@@ -1,3 +1,9 @@
+<% if @event.latitude=="" || @event.longitude == "" %>
+    <%  coor = ret_coor @event.venue %>
+    <% @event.latitude = coor[0] %>
+    <% @event.longitude = coor[1] %>
+<% end %>
+
 <h2 align="center">Title: <%= @event.title %> </h2>
 <div class="well col-xs-8 col-xs-offset-2">
     <ul class="listing">
@@ -16,6 +22,7 @@
     <hr>
     <h4 class="venue"><strong>Venue:</strong></h4><%= @event.venue%>
     <hr>
+    
     <% if @event.latitude %>
         <iframe width="450" height="250" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASm9g9kWz7LPdZngxkB4quGBuFll1XhEM&q=<%= @event.latitude %>,<%= @event.longitude %>" allowfullscreen>
         </iframe>
@@ -40,4 +47,5 @@
         <%= link_to "View all events", events_path, class: "btn btn-xs btn-success"%>
     </div>
 </div>
+
 
